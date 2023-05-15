@@ -74,7 +74,8 @@ Note, by entering the function directly in the code, the user can properly get e
 For inbult complexes, just use ch 2 or 3.
 
 In all cases, you will see a plot with the critical points on it the output. In case of inbuilt functions, you will also see the complex.\
-Connecting these critical points appropriately should give the reeb graph, however due to challenges, this task has not been implemented.
+Connecting these critical points appropriately should give the reeb graph, however due to challenges, this task has not been implemented.\
+Note: Z axis is taken as height function.
 
 
 
@@ -100,7 +101,7 @@ Output of  ```example2.txt```
 
 
 
-### Triangulation of complex method 
+### Parametric equation of complex method 
 
 Output of inbuilt torus
 
