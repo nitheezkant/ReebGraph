@@ -56,6 +56,7 @@ if ch==1:
     fig1 = plt.figure()
     axx = fig1.add_subplot(111, projection='3d')
     axx.set_title("Reeb Graph")
+    print("Points classification:")
     for i in range(len(x_s)):
         diff=[]
         sign=0
@@ -80,25 +81,25 @@ if ch==1:
         if sign_flips==0:
             if sign ==1:
                 #Minima
-                print("min",points[i+1][0])
+                print("Minima:",points[i+1][0][1:])
                 minima_x.append(x_s[i])
                 minima_y.append(y_s[i])
                 minima_z.append(z_s[i])
                 points[i+1].append("min")
             else:
-                print("max",points[i+1][0])
+                print("Maxima:",points[i+1][0][1:])
                 maxima_x.append(x_s[i])
                 maxima_y.append(y_s[i])
                 maxima_z.append(z_s[i])
                 points[i+1].append("max")
         elif sign_flips>2:
-            print("saddle",points[i+1][0])
+            print("Saddle:",points[i+1][0][1:])
             saddle_x.append(x_s[i])
             saddle_y.append(y_s[i])
             saddle_z.append(z_s[i])
             points[i+1].append("sad")
         else:
-            print("reg",points[i+1][0])
+            print("Regular:",points[i+1][0][1:])
             regular_x.append(x_s[i])
             regular_y.append(y_s[i])
             regular_z.append(z_s[i])
@@ -147,6 +148,9 @@ if ch==1:
     ax.set_xlabel('X')
     ax.set_ylabel('Y')
     ax.set_zlabel('Height')
+    axx.set_xlabel('X')
+    axx.set_ylabel('Y')
+    axx.set_zlabel('Height')
     plt.show()
 
 
@@ -176,6 +180,8 @@ elif ch==2:
         fy=(R-(r*cos(u)))*sin(v)
         v_limu=2*pi
         u_limu=2*pi
+        u_liml=0
+        v_liml=0
 
     elif ch==3:
         f=cos(u)*cos(v)
@@ -183,6 +189,8 @@ elif ch==2:
         fy=sin(v)
         v_limu=pi/2
         u_limu=2*pi
+        u_liml= 0
+        v_liml= -pi/2
     print(f,fx,fy,u_limu)
     
     derivative_f = f.diff(u)
@@ -203,6 +211,10 @@ elif ch==2:
         if critical_point[point][1]>= v_limu:
             continue
         if critical_point[point][0]>= u_limu:
+            continue
+        if critical_point[point][1]< v_liml:
+            continue
+        if critical_point[point][0]< u_liml:
             continue
 
         if(z_value in z_values):
